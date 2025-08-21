@@ -161,11 +161,11 @@ textarea {
     border-top: 2px solid #eee;
 }
 .submit-btn {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    background-color:  #fc02d2;
     color: white;
     padding: 15px 40px;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
