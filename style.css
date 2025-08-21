@@ -12,6 +12,11 @@ body {
     min-height: 100vh;
     padding: 3rem;
 }
+.recette{
+    background-image: url(./img/flat\,750x\,075\,f-pad\,750x1000\,f8f8f8.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .italic{
     font-style: italic;
 }
@@ -23,7 +28,6 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     overflow: hidden;
 }
-
 .header {
     background: linear-gradient(135deg, #a3ffa6 0%, #e7ffe9 100%);
     color: white;
@@ -35,11 +39,11 @@ body {
 }
 .header h1 {
     font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 10px;
     color: black;
 }
 .header p {
-    
     text-transform: uppercase;
 }
 .form-container {
@@ -91,6 +95,7 @@ input[type="email"],
 input[type="tel"],
 input[type="date"],
 input[type="number"],
+input[type="file"],
 select,
 textarea {
     width: 100%;
@@ -158,16 +163,15 @@ textarea {
     text-align: center;
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 2px solid #eee;
 }
 .submit-btn {
-    background: linear-gradient(135deg, #fc0af0 0%, #faa2d3 100%);
+    background-color:  #fc0af0;
     color: white;
     padding: 15px 40px;
     border: none;
-    border-radius: 50px;
+    border-radius: 20px;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;

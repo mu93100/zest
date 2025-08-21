@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nouvelle recette</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="recette">
+    <div class="container">
+        <div class="header">
+            <h1>nouvelle recette</h1>
+            <p>Par x du groupe z, ville</p>
+        </div>
+
+        <div class="form-container">
+            <form id="recetteForm" action="/ajouter_recette" method="POST" enctype="multipart/form-data">
+<!-- 
+avec : <input type="file"> : permet à user de télécharger une image depuis son ordi
+enctype="multipart/form-data" ::: obligatoire pour envoyer des fichiers via le formulaire
+accept="image/*" ::: limite le choix aux fichiers image (jpg, png, etc.)
+
+En PHP : utiliser $_FILES['photo']
+
+<input type="file" id="photo" name="photo" accept="image/*" onchange="previewImage(event)" required>
+<img id="preview" style="max-width: 300px; margin-top: 10px;" />
+<script>
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function(){
+        const output = document.getElementById('preview');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>-->
+
+                
+                <!-- Informations adherent-->
+                <!-- <div class="form-section">                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom <span class="required">*</span></label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom <span class="required">*</span></label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom de mon groupe <span class="required">*</span></label>
+                            <input type="text" id="groupe" name="groupe" required>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-section">                    
+                    <div class="form-row">    
+                        <div class="form-group">
+                            <label for="recetteTitre">Titre de la recette</label>
+                            <input type="text" id="recetteTitre" name="recetteTitre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recettePhoto">Photo de la recette</label>
+                            <input type="file" id="recettePhoto" name="recettePhoto" accept="image/*" required>
+                        </div>
+                    </div>
+                    <div class="form-group">    
+                        <label for="recetteDescription">Description de la recette</label>
+                        <textarea id="recetteDescription" name="recetteDescription" placeholder="[ Le texte sera publié à l'identique ] soit drôle sérieux.se créatif.ve vénère, militant.e .. on adorera tous les tons" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">E N V O Y E R</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!-- 
+Maintenant, pour que ça fonctionne avec Symfony et ta table recettes, voici les étapes à suivre côté backend :
+
+🧱 1. Créer l'entité Recette
+php
+// src/Entity/Recette.php
+#[ORM\Entity]
+class Recette
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $titre = null;
+
+    #[ORM\Column(type: 'text')]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
+
+    // Getters & setters...
+}
+🧾 2. Créer un formulaire Symfony
+php
+// src/Form/RecetteType.php
+class RecetteType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('titre')
+            ->add('description')
+            ->add('photo', FileType::class, [
+                'label' => 'Photo de la recette',
+                'mapped' => false,
+                'required' => true,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => ['image/jpeg', 'image/png'],
+                        'mimeTypesMessage' => 'Format d’image invalide',
+                    ])
+                ],
+            ]);
+    }
+}
+🧑‍🍳 3. Créer le contrôleur pour gérer /ajouter_recette
+php
+// src/Controller/RecetteController.php
+#[Route('/ajouter_recette', name: 'ajouter_recette')]
+public function ajouter(Request $request, EntityManagerInterface $em): Response
+{
+    $recette = new Recette();
+    $form = $this->createForm(RecetteType::class, $recette);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $photoFile = $form->get('photo')->getData();
+
+        if ($photoFile) {
+            $newFilename = uniqid().'.'.$photoFile->guessExtension();
+            $photoFile->move(
+                $this->getParameter('photos_directory'),
+                $newFilename
+            );
+            $recette->setPhoto($newFilename);
+        }
+
+        $em->persist($recette);
+        $em->flush();
+
+        return $this->redirectToRoute('recette_success');
+    }
+
+    return $this->render('recette/ajouter.html.twig', [
+        'form' => $form->createView(),
+    ]);
+}
+📁 4. Configurer le dossier d’upload
+Dans config/services.yaml :
+
+yaml
+parameters:
+    photos_directory: '%kernel.project_dir%/public/uploads/photos'
+Et crée le dossier public/uploads/photos dans ton projet.
+
+🧪 5. Adapter ton template Twig
+Remplace ton formulaire HTML par :
+
+twig
+{{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit">E N V O Y E R</button>
+{{ form_end(form) }}
+    -->
