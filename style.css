@@ -4,6 +4,9 @@
     box-sizing: border-box;
     cursor: pointer;
 }
+/* .form_section {
+    border: 2px dashed red;
+} */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: url(./img/bg.jpg);
@@ -15,6 +18,9 @@ body {
 .italic{
     font-style: italic;
 }
+.notes{
+    color: blue;
+}
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -23,7 +29,6 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     overflow: hidden;
 }
-
 .header {
     background: linear-gradient(135deg, #a3ffa6 0%, #e7ffe9 100%);
     color: white;
@@ -39,16 +44,20 @@ body {
     color: black;
 }
 .header p {
-    
     text-transform: uppercase;
 }
-.form-container {
+p {
+    margin-top: 15px; 
+    color: #666; 
+    font-size: 0.9rem;
+}
+.form_container {
     padding: 40px;
 }
-.form-section {
+.form_section {
     margin-bottom: 40px;
 }
-.section-title {
+.section_title {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 20px;
@@ -57,7 +66,7 @@ body {
     display: flex;
     align-items: center;
 }
-.section-title::before {
+.section_title::before {
     content:"";
     width: 3rem ;
     height: 3rem;
@@ -67,14 +76,14 @@ body {
     border-radius: 50%;
     margin-right: 10px;
 }
-.form-group {
+.form_group {
     margin-bottom: 25px;
 }
-.form-row {
+.form_row {
     display: flex;
     gap: 20px;
 }
-.form-row .form-group {
+.form_row .form_group {
     flex: 1;
 }
 label {
@@ -95,7 +104,7 @@ select,
 textarea {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #ddd;
+    border: 2px dotted #ddd;
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -111,84 +120,88 @@ textarea {
     resize: vertical;
     min-height: 100px;
 }
-.checkbox-group {
+.checkbox_group {
     display: flex;
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 20px;
 }
-.checkbox-group input[type="checkbox"] {
+.checkbox_group input {
     width: 20px;
     height: 20px;
     margin: 0;
     accent-color: #a3ffa6;
 }
-.checkbox-group label {
+.checkbox_group label {
     margin: 0;
     font-weight: normal;
     line-height: 1.5;
     cursor: pointer;
 }
-.radio-group {
+.radio_group {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
 }
-.radio-option {
+.radio_option {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-.radio-option input[type="radio"] {
+.radio_option input{
     width: 18px;
     height: 18px;
     accent-color: #a3ffa6;
 }
-.radio-option label {
+.radio_option label {
     margin: 0;
     font-weight: normal;
 }
-.motivation-section {
+.motivation_section {
     background: #f8f9fa;
     padding: 30px;
     border-radius: 15px;
     margin: 30px 0;
 }
-.submit-container {
+.submit_container {
     text-align: center;
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 2px solid #eee;
 }
-.submit-btn {
+.submit_btn {
     background-color:  #fc02d2;
     color: white;
     padding: 15px 40px;
     border: none;
     border-radius: 10px;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.submit-btn:hover {
+.submit_btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
 }
-.info-box {
+.info_box {
     background: linear-gradient(135deg, #a3ffa6 0%, #e7ffe9 100%);
     border-left: 1px dotted black;
     padding: 20px;
     margin: 20px 0;
     border-radius: 0 20px 20px 0;
 }
-.info-box h4 {
+.info_box h4 {
     color: white;
     margin-bottom: 10px;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    /* padding: 40px;
+    text-align: center; */
 }
-.info-box p {
+.info_box p {
     color: #555;
     line-height: 1.6;
 }
@@ -207,16 +220,16 @@ textarea {
         font-size: 2rem;
     }
     
-    .form-container {
+    .form_container {
         padding: 30px 20px;
     }
     
-    .form-row {
+    .form_row {
         flex-direction: column;
         gap: 0;
     }
     
-    .radio-group {
+    .radio_group {
         flex-direction: column;
         gap: 15px;
     }

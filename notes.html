@@ -1,0 +1,108 @@
+-------------------------------
+affichage référent ds BDD et interface admin
+-------------------------------
+2. Traitement PHP (dans traitement.php)
+php
+<?php
+// Connexion à la base (exemple PDO)
+$pdo = new PDO('mysql:host=localhost;dbname=ma_base', 'utilisateur', 'motdepasse');
+
+// Récupérer la valeur de la checkbox
+$referent = isset($_POST['referent']) ? 'référent' : 'non référent';
+
+// ID de l'utilisateur (à adapter)
+$userId = 123;
+
+// Mise à jour dans la base
+$sql = "UPDATE USERS SET referent = :referent WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+  ':referent' => $referent,
+  ':id' => $userId
+]);
+
+echo "Statut référent mis à jour.";
+
+3. Affichage dans l'interface ADMIN
+php
+<?php
+// Requête récupération user
+$query = $pdo->prepare("SELECT referent FROM USERS WHERE id = :id");
+$query->execute([':id' => $userId]);
+$user = $query->fetch();
+
+echo "Statut : " . htmlspecialchars($user['referent']);
+
+ OU avec booléan ds la BDD :
+ $referent = isset($_POST['referent']) ? 1 : 0;
+
+$sql = "UPDATE USERS SET referent = :referent WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    ':referent' => $referent,
+    ':id' => $userId
+]);
+
+
+3. Affichage dans l’interface ADMIN avec texte lisible
+php
+$query = $pdo->prepare("SELECT referent FROM USERS WHERE id = :id");
+$query->execute([':id' => $userId]);
+$user = $query->fetch();
+
+echo $user['referent'] ? 'Référent' : 'Non référent';
+
+
+AVEC SYMFONY 
+
+1. Entité User (Doctrine)
+Ta propriété dans l'entité User :
+
+php
+// src/Entity/User.php
+
+/**
+ * @ORM\Column(type="boolean")
+ */
+private $referent;
+
+public function getReferent(): ?bool
+{
+    return $this->referent;
+}
+
+public function setReferent(bool $referent): self
+{
+    $this->referent = $referent;
+    return $this;
+}
+2. EasyAdmin : configurer l’affichage sous forme de texte dans le CRUD
+Dans ton contrôleur CRUD (ex. UserCrudController.php), dans la méthode configureFields() :
+
+php
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+
+public function configureFields(string $pageName): iterable
+{
+    return [
+        // autres champs...
+
+        BooleanField::new('referent')
+            ->setLabel('Référent')
+            ->renderAsSwitch(false)  // affiche comme texte Oui/Non
+            ->formatValue(function ($value) {
+                return $value ? 'Référent' : 'Non référent';
+            }),
+    ];
+}
+3. Formulaire utilisateur (Twig) avec checkbox
+Dans ton formulaire, le champ checkbox doit lier ce booléen :
+
+text
+{{ form_start(form) }}
+  {{ form_row(form.referent) }}
+  <button type="submit">Enregistrer</button>
+{{ form_end(form) }}
+Le champ referent sera géré automatiquement comme booléen (coché / décoché).
+-------------------------
