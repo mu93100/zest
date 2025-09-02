@@ -12,8 +12,10 @@ body {
     background-image: url(./img/bg.jpg);
     /* background-repeat: no-repeat; */
     background-size: contain;
+    display: flex;
+    justify-content: center; /* centre horizontalement */
     min-height: 100vh;
-    padding: 3rem;
+    padding: 1rem;
 }
 .italic{
     font-style: italic;
@@ -22,7 +24,7 @@ body {
     color: blue;
 }
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     background: #ffffff;
     border-radius: 20px;
@@ -198,6 +200,10 @@ h4 {
     line-height: 1.6;
 }
 /* Responsive */
+@media (min-width:1024px) {
+    body {
+        padding: 3rem;
+}
 @media (max-width: 768px) {
     .container {
         margin: 10px;
