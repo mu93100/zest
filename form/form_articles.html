@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nouvelle recette</title>
+    <title>nouvel article</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body class="recette">
@@ -14,21 +14,21 @@
         </div>
 
         <div class="form_container">
-            <form id="recetteForm" action="/ajouter_recette" method="POST" enctype="multipart/form_data">
+            <form id="articleForm" action="/ajouter_article" method="POST" enctype="multipart/form_data">
                 <div class="form_section">                    
-                    <div class="form_row">    
+                    <div class="form_row">     
                         <div class="form_group">
                             <label for="articleTitre">Titre de l'article</label>
                             <input type="text" id="articleTitre" name="articleTitre" required>
                         </div>
                         <div class="form_group">
-                            <label for="recettePhoto">Photo de la recette :</label>
+                            <label for="articlePhoto">Photo de l'article :</label>
                             <input type="file" id="articlePhoto" name="articlePhoto" accept="image/*" required>
                         </div>
                     </div>
                     <div class="form_group">    
                         <label for="articleContenu">Contenu de l'article</label>
-                        <textarea id="articleContenu" name="articleContenu" placeholder="[ Le texte sera publié à l'identique ] soit drôle sérieux.se créatif.ve vénère, militant.e .. on adorera tous les tons" required></textarea>
+                        <textarea id="articleContenu" name="articleContenu" placeholder="[ Le texte sera édité après soumission au Pôle communication ] soit drôle sérieux.se créatif.ve vénère militant.e .. on adorera tous les tons excepté les contenus haineux et discriminatoires" required></textarea>
                     </div>
                 </div>
 
