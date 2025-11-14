@@ -1,0 +1,23 @@
+BDD
+PK clé primaire : ID du record / de l'enregistrement/ de la ligne
+FK clé secondaire : qui établit une relation avec clé primaire d'une autre table / utilisée pour connecter des données entre tables différentes, assurant la structure et la cohérence relationnelle des bases de données.
+
+MPD
+https://www.solidpepper.com/blog/modele-physique-de-donnees-mpd-definition-enjeux-exemple
+
+
+
+
+-----------------------------------------------
+**BDD**
+**pour visualiser mes BDD sur mon mac :::**
+**>** click sur BDD
+> click sur Exporter (dans nav haut, env. au mil) > OK
+chez moi : > click sur Importer
+-----------------------------------------------
+
+
+articles long : text
+remplissage : formulaire varchar(50->1000)
+
+question à choix unique (radio) ou multiple (checkbox)
