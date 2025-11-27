@@ -5,10 +5,246 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ZEST</title>
         <link rel="stylesheet" href="./style.css">
+        <style>
+            * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+/* .form_section {
+    border: 2px dashed red;
+} */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(./img/bg.jpg);
+    /* background-repeat: no-repeat; */
+    background-size: contain;
+    display: flex;
+    justify-content: center; /* centre horizontalement */
+    min-height: 100vh;
+    padding: 1rem;
+}
+.italic{
+    font-style: italic;
+}
+.notes{
+    color: blue;
+}
+.container {
+    width: 90%;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    /* box-shadow: 0 20px 40px rgba(0,0,0,0.1); */
+    overflow: hidden;
+}
+.header {
+    background: linear-gradient(135deg, #a3ffa6 0%, #e7ffe9 100%);
+    padding: 40px;
+    text-align: center;
+}
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
+.header p {
+    text-transform: uppercase;
+}
+p {
+    margin-top: 15px; 
+    color: #666; 
+    font-size: 0.9rem;
+}
+.form_container {
+    padding: 2rem;
+}
+.form_section {
+    margin-bottom: 40px;
+}
+.section_title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* border-bottom: 2px solid #4CAF50; */
+    display: flex;
+    align-items: center;
+}
+.section_title::before {
+    content:"";
+    width: 3rem ;
+    height: 3rem;
+    background-image: url(./img/orange.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.form_group {
+    margin-bottom: 25px;
+}
+.form_row {
+    display: flex;
+    gap: 20px;
+}
+.form_row .form_group {
+    flex: 1;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+.required {
+    color: #e74c3c;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px dotted #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #72ff77;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.checkbox_group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.checkbox_group input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: #a3ffa6;
+}
+.checkbox_group label {
+    margin: 0;
+    font-weight: normal;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.radio_group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.radio_option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.radio_option input{
+    width: 18px;
+    height: 18px;
+    accent-color: #a3ffa6;
+}
+.radio_option label {
+    margin: 0;
+    font-weight: normal;
+}
+.motivation_section {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 30px 0;
+}
+.submit_container {
+    text-align: center;
+}
+.submit_btn {
+    background-color:  #fc02d2;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+}
+.submit_btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+}
+.info_box {
+    background: linear-gradient(135deg, #a3ffa6 0%, #e7ffe9 100%);
+    border-left: 1px dotted black;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 20px 20px 0;
+}
+h4 {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+.info_box p {
+    color: #555;
+    line-height: 1.6;
+}
+/* Responsive */
+@media (min-width:1024px) {
+    body {
+        padding: 3rem;
+}
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        border-radius: 15px;
+    }
+    
+    .header {
+        padding: 30px 20px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .form_container {
+        padding: 1.3rem;
+    }
+    
+    .form_row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .radio_group {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+        </style>
     </head>
     <body>
         <div class="container">
-            <div class="titre">
+            <div class="header">
                 <h1>ADHESION CORTO-ZEST</h1>
                 <h4>Groupe d'Achat Solidaire</h4>
                 <h4>Consommation Responsable</h4>
@@ -30,6 +266,9 @@
                                 <label for="nom">Nom <span class="required">*</span></label>
                                 <input type="text" id="nom" name="nom" required>
                             </div>
+                        </div>
+
+                        <div class="form_row">
                             <div class="form_group">
                                 <label for="email">Email <span class="required">*</span></label>
                                 <input type="email" id="email" name="email" required>
@@ -40,12 +279,12 @@
                             </div>
                         </div>
 
+                        <div class="form_group">
+                            <label for="adresse">Adresse complète <span class="required">*</span></label>
+                            <input type="text" id="adresse" name="adresse" required>
+                        </div>
 
                         <div class="form_row">
-                            <div class="form_group">
-                                <label for="adresse">Adresse complète <span class="required">*</span></label>
-                                <input type="text" id="adresse" name="adresse" required>
-                            </div>
                             <div class="form_group">
                                 <label for="ville">Ville <span class="required">*</span></label>
                                 <input type="text" id="ville" name="ville" required>
@@ -56,12 +295,17 @@
                             </div>
                         </div>
 
+                        <div class="form_group">
+                            <label for="dateNaissance">Date de naissance</label>
+                            <input type="date" id="dateNaissance" name="dateNaissance">
+                        </div>
+                    </div>
+
+                    <!-- Informations foyer -->
+                    <div class="form_section">
+                        <h2 class="section_title">Composition du foyer</h2>
+
                         <div class="form_row">
-                            <div class="form_group">
-                                <label for="dateNaissance">Date de naissance</label>
-                                <input type="date" id="dateNaissance" name="dateNaissance">
-                            </div>
-                                        
                             <div class="form_group">
                                 <label for="nbPersonnes">Nombre de personnes dans le foyer <span class="required">*</span></label>
                                 <select id="nbPersonnes" name="nbPersonnes" required>
@@ -79,8 +323,7 @@
                                 <input type="number" id="nbEnfants" name="nbEnfants" min="0" max="10" value="0">
                             </div>
                         </div>
-                    </div>
-                            
+                    </div>        
                     <!-- mon groupe -->        
                     <div class="form_section">
                         <h2 class="section_title">Mon groupe <span class="required"> *</span></h2>
@@ -105,112 +348,91 @@
                         </div>
                         
                         <div class="checkbox_group form_row">
-                                <input type="checkbox" id="referent" name="referent" value="true">
                                 <label for="referent">Je suis référent.e de mon groupe</label>
+                                <input type="checkbox" id="referent" name="referent" value="true">
                         </div>
                         <div class="checkbox_group form_row">
-                                <input type="checkbox" id="referent" name="referent" value="true">
                                 <label for="referent">Mon groupe peut accueillir de nouvelleaux adhérent.es</label>
-
-                                <img src="/img/groupe_open_img.webp" alt="groupe_open">
+                                <input type="checkbox" id="referent" name="referent" value="true">
                         </div>                    
                     </div>
-
                     <!-- Motivations -->
                     <div class="form_section">
                         <h2 class="section_title">Motivations & attentes</h2>
 
-                        <div class="form_2section">
-                            <div>
-                                <div class="form_group">
-                                    <label>Quelles sont tes principales motivations pour rejoindre le GAS ? <span class="required">*</span></label>
-                                    <div class="checkbox_group">
-                                        <input type="checkbox" id="motiv2" name="motivations[]" value="qualite">
-                                        <label for="motiv2">Accéder à des produits de qualité</label>
-                                    </div>
-                                    <div class="checkbox_group">
-                                        <input type="checkbox" id="motiv1" name="motivations[]" value="economique">
-                                        <label for="motiv1">Acheter de bons produits moins chers</label>
-                                    </div>                            
-                                    <div class="checkbox_group">
-                                        <input type="checkbox" id="motiv3" name="motivations[]" value="ecoresponsable">
-                                        <label for="motiv3">Soutenir une agriculture écoresponsable</label>
-                                    </div>
-                                    <div class="checkbox_group">
-                                        <input type="checkbox" id="motiv4" name="motivations[]" value="militant">
-                                        <label for="motiv4">Lutter contre la grande distribution</label>
-                                    </div>
-                                    <div class="checkbox_group">
-                                        <input type="checkbox" id="motiv5" name="motivations[]" value="social">
-                                        <label for="motiv5">Créer du lien social</label>
-                                    </div>
+                        <div class="motivation_section">
+                            <div class="form_group">
+                                <label>Quelles sont tes principales motivations pour rejoindre le GAS ? <span class="required">*</span></label>
+                                <div class="checkbox_group">
+                                    <input type="checkbox" id="motiv2" name="motivations[]" value="qualite">
+                                    <label for="motiv2">Accéder à des produits de qualité</label>
+                                </div>
+                                <div class="checkbox_group">
+                                    <input type="checkbox" id="motiv1" name="motivations[]" value="economique">
+                                    <label for="motiv1">Acheter de bons produits moins chers</label>
+                                </div>                            
+                                <div class="checkbox_group">
+                                    <input type="checkbox" id="motiv3" name="motivations[]" value="ecoresponsable">
+                                    <label for="motiv3">Soutenir une agriculture écoresponsable</label>
+                                </div>
+                                <div class="checkbox_group">
+                                    <input type="checkbox" id="motiv4" name="motivations[]" value="militant">
+                                    <label for="motiv4">Lutter contre la grande distribution</label>
+                                </div>
+                                <div class="checkbox_group">
+                                    <input type="checkbox" id="motiv5" name="motivations[]" value="social">
+                                    <label for="motiv5">Créer du lien social</label>
                                 </div>
                             </div>
-                            <div>
-                                <div class="form_group">
-                                <label for="attentes">Décris tes attentes spécifiques (types de produits, fréquence, etc.)</label>
-                                <textarea id="attentes" name="attentes" placeholder="Exprimes tes attentes, besoins particuliers, suggestions..."></textarea>
-                            </div>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="attentes">Décris tes attentes spécifiques (types de produits, fréquence, etc.)</label>
+                            <textarea id="attentes" name="attentes" placeholder="Exprimes tes attentes, besoins particuliers, suggestions..."></textarea>
                         </div>
                     </div>
 
                     <!-- Disponibilités -->
                     <div class="form_section">
                         <h2 class="section_title">Participation & disponibilités</h2>
-                        <p class="italic">Chaque groupe est tenu de participer au fonctionnement du GAS à hauteur de 
-10h annuelles par adhérent.e.s [pôles de travail, CA, livraisons] <br>le TOTAL HORAIRE du groupe peut être effectué par 1 ou plusieurs personnes</p>
+                        <p class="italic">10h annuelles par adhérent.e.s sont nécessaires au fonctionnement de l'asso</p>
                         <br>
-                        <div class="form_2section">                       
-                            <div class="form_group">
-                                <label>Es-tu disponible pour participer à la vie du GAS ? groupes de travail, CA, livraisons <br><span class="required"> *  </span><span class="italic notes">  Rajouter des tranches d'heures</span></label>
-                                <div class="radio_group">
-                                    <div class="radio_option">
-                                        <input type="radio" id="dispo1" name="disponibilite" value="tres_disponible" required>
-                                        <label for="dispo1">Très disponible</label>
-                                    </div>
-                                    <div class="radio_option">
-                                        <input type="radio" id="dispo2" name="disponibilite" value="disponible" required>
-                                        <label for="dispo2">Disponible occasionnellement</label>
-                                    </div>
-                                    <div class="radio_option">
-                                        <input type="radio" id="dispo3" name="disponibilite" value="peu_disponible" required>
-                                        <label for="dispo3">Peu disponible</label>
-                                    </div>
-                                    <div class="radio_option">
-                                        <input type="radio" id="dispo4" name="disponibilite" value="pas_disponible" required>
-                                        <label for="dispo4">Pas disponible [je délègue mes 10h aux autres membres de mon groupe]</label>
-                                    </div>                                </div>
-                            </div>
-                            <div class="form_group">
-                                <div class="form_group">
-                                    <label for="competences">Quelles compétences particulières peux-tu partager ?</label>
-                                    <textarea id="competences" name="competences" placeholder="Comptabilité, informatique, transport, relations producteurs, etc."></textarea>
+                        
+                        <div class="form_group">
+                            <label>Es-tu disponible pour participer à la vie du GAS ? groupes de travail, CA, livraisons <span class="required"> *  </span><span class="italic notes">  Rajouter des tranches d'heures</span></label>
+                            <div class="radio_group">
+                                <div class="radio_option">
+                                    <input type="radio" id="dispo1" name="disponibilite" value="tres_disponible" required>
+                                    <label for="dispo1">Très disponible</label>
+                                </div>
+                                <div class="radio_option">
+                                    <input type="radio" id="dispo2" name="disponibilite" value="disponible" required>
+                                    <label for="dispo2">Disponible occasionnellement</label>
+                                </div>
+                                <div class="radio_option">
+                                    <input type="radio" id="dispo3" name="disponibilite" value="peu_disponible" required>
+                                    <label for="dispo3">Peu disponible</label>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form_group">
+                            <label for="competences">Quelles compétences particulières peux-tu partager ?</label>
+                            <textarea id="competences" name="competences" placeholder="Comptabilité, informatique, transport, relations producteurs, etc."></textarea>
+                        </div>
                         <div class="form_group">
                             <label for="competences">A quel(s) groupe(s) de travail souhaites-tu participer ?</label>
-                            <div class="checkbox_group">
-                                <input type="checkbox" id="pole_ca" name="CA" required>
-                                <label for="pole_ca">CA</label>
-                                <input type="checkbox" id="pole_orga" name="Pôle orga et médiation" required>
-                                <label for="pole_orga">Pôle orga et médiation</label>
-                                <input type="checkbox" id="pole_adhesion" name="Pôle adhésion" required>
-                                <label for="pole_adhesion">Pôle adhésion</label>
-                                <input type="checkbox" id="pole_commandes" name="Pôle commandes" required>
-                                <label for="pole_commandes">Pôle commandes</label>
-                                <input type="checkbox" id="pole_produit" name="Pôle produit" required>
-                                <label for="pole_produit">Pôle produit</label>
-                                <input type="checkbox" id="pole_logistique" name="Pôle logistique" required>
-                                <label for="pole_logistique">Pôle logistique</label>
-                                <input type="checkbox" id="pole_communication" name="Pôle communication" required>
-                                <label for="pole_communication">Pôle communication</label>
-                                <input type="checkbox" id="pole_relations_exterieures" name="Pôle relations extérieures" required>
-                                <label for="pole_relations_exterieures">Pôle relations extérieures</label>
-                                <input type="checkbox" id="pole_nsp" name="Pôle ne sais pas" required>
-                                <label for="pole_nsp">Ne sais pas</label>
-                            </div>
-    
+                            <textarea id="competences" name="competences" placeholder="."></textarea>
+                        </div> 
+
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>    
+                        <p class="italic">Liste pôles de travail</p>     
                     </div>
 
                     <!-- INFOS ZEST -->
@@ -239,13 +461,14 @@
                             </label>
                         </div>    
                         <div class="checkbox_group">
-                            <input type="checkbox" id="adhesion10" name="adhesion" required>
-                            <label for="adhesion5">10€</label>
-                            <input type="checkbox" id="adhesion5" name="adhesion" required>
-                            <label for="adhesion10">adhésion solidaire 5€</label>
-                            <input type="checkbox" id="adhesion15+" name="adhesion" required>
-                            <label for="adhesion15">adhésion de soutien 15€ et +</label>
-                            <p>IBAN : FR76 0000 0000 0000 0000</p>
+                                <input type="checkbox" id="adhesion10" name="adhesion" required>
+                                <label for="adhesion10">10€</label>
+                                <input type="checkbox" id="adhesion5" name="adhesion" required>
+                                <label for="adhesion10">adhésion solidaire 5€</label>
+                                <input type="checkbox" id="adhesion15+" name="adhesion" required>
+                                <label for="adhesion10">adhésion de soutien 15€ et +</label>
+                                <p>IBAN : FR76 0000 0000 0000 0000</p>
+                            </div>
                         </div>
 
                         <div class="checkbox_group">
